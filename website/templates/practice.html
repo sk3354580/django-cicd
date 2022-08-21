@@ -1,0 +1,969 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    {% static 'adminwebsite' %}
+<!-- Mirrored from dreamguys.co.in/demo/doccure/admin/admin by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:20 GMT -->
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <title>Doccure - Dashboard</title>
+		
+		<!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'adminwebsite/img/favicon.png' %}">
+		
+		<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'adminwebsite/css/bootstrap.min.css' %}">
+		
+		<!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="{% static 'adminwebsite/css/font-awesome.min.css' %}">
+		
+		<!-- Feathericon CSS -->
+        <link rel="stylesheet" href="{% static 'adminwebsite/css/feathericon.min.css' %}">
+		
+		<link rel="stylesheet" href="{% static 'adminwebsite/plugins/morris/morris.css' %}">
+		
+		<!-- Main CSS -->
+        <link rel="stylesheet" href="{% static 'adminwebsite/css/style.css' %}">
+		
+		<!--[if lt IE 9]>
+			<script src="{% static 'adminwebsite/js/html5shiv.min.js' %}"></script>
+			<script src="{% static 'adminwebsite/js/respond.min.js' %}"></script>
+		<![endif]-->
+    </head>
+    <body>
+
+	
+		<!-- Main Wrapper -->
+        <div class="main-wrapper">
+		
+			<!-- Header -->
+            <div class="header">
+			
+				<!-- Logo -->
+                <div class="header-left">
+                    <a href="admin" class="logo">
+						<img src="{% static 'adminwebsite/img/logo.png' %}" alt="Logo">
+					</a>
+					<a href="admin" class="logo logo-small">
+						<img src="{% static 'adminwebsite/img/logo-small.png' %}" alt="Logo" width="30" height="30">
+					</a>
+                </div>
+				<!-- /Logo -->
+				
+				<a href="javascript:void(0);" id="toggle_btn">
+					<i class="fe fe-text-align-left"></i>
+				</a>
+				
+				<div class="top-nav-search">
+					<form>
+						<input type="text" class="form-control" placeholder="Search here">
+						<button class="btn" type="submit"><i class="fa fa-search"></i></button>
+					</form>
+				</div>
+				
+				<!-- Mobile Menu Toggle -->
+				<a class="mobile_btn" id="mobile_btn">
+					<i class="fa fa-bars"></i>
+				</a>
+				<!-- /Mobile Menu Toggle -->
+				
+				<!-- Header Right Menu -->
+				<ul class="nav user-menu">
+
+					<!-- Notifications -->
+					<li class="nav-item dropdown noti-dropdown">
+						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+							<i class="fe fe-bell"></i> <span class="badge badge-pill">3</span>
+						</a>
+						<div class="dropdown-menu notifications">
+							<div class="topnav-dropdown-header">
+								<span class="notification-title">Notifications</span>
+								<a href="javascript:void(0)" class="clear-noti"> Clear All </a>
+							</div>
+							<div class="noti-content">
+								<ul class="notification-list">
+									<li class="notification-message">
+										<a href="#">
+											<div class="media">
+												<span class="avatar avatar-sm">
+													<img class="avatar-img rounded-circle" alt="User Image" src="{% static 'adminwebsite/img/doctors/doctor-thumb-01.jpg' %}">
+												</span>
+												<div class="media-body">
+													<p class="noti-details"><span class="noti-title">Dr. Ruby Perrin</span> Schedule <span class="noti-title">her appointment</span></p>
+													<p class="noti-time"><span class="notification-time">4 mins ago</span></p>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li class="notification-message">
+										<a href="#">
+											<div class="media">
+												<span class="avatar avatar-sm">
+													<img class="avatar-img rounded-circle" alt="User Image" src="{% static 'adminwebsite/img/patients/patient1.jpg' %}">
+												</span>
+												<div class="media-body">
+													<p class="noti-details"><span class="noti-title">Charlene Reed</span> has booked her appointment to <span class="noti-title">Dr. Ruby Perrin</span></p>
+													<p class="noti-time"><span class="notification-time">6 mins ago</span></p>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li class="notification-message">
+										<a href="#">
+											<div class="media">
+												<span class="avatar avatar-sm">
+													<img class="avatar-img rounded-circle" alt="User Image" src="{% static 'adminwebsite/img/patients/patient2.jpg' %}">
+												</span>
+												<div class="media-body">
+												<p class="noti-details"><span class="noti-title">Travis Trimble</span> sent a amount of $210 for his <span class="noti-title">appointment</span></p>
+												<p class="noti-time"><span class="notification-time">8 mins ago</span></p>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li class="notification-message">
+										<a href="#">
+											<div class="media">
+												<span class="avatar avatar-sm">
+													<img class="avatar-img rounded-circle" alt="User Image" src="{% static 'adminwebsite/img/patients/patient3.jpg' %}">
+												</span>
+												<div class="media-body">
+													<p class="noti-details"><span class="noti-title">Carl Kelly</span> send a message <span class="noti-title"> to his doctor</span></p>
+													<p class="noti-time"><span class="notification-time">12 mins ago</span></p>
+												</div>
+											</div>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<div class="topnav-dropdown-footer">
+								<a href="#">View all Notifications</a>
+							</div>
+						</div>
+					</li>
+					<!-- /Notifications -->
+					
+					<!-- User Menu -->
+					<li class="nav-item dropdown has-arrow">
+						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+							<span class="user-img"><img class="rounded-circle" src="{% static 'adminwebsite/img/profiles/avatar-01.jpg' %}" width="31" alt="Ryan Taylor"></span>
+						</a>
+						<div class="dropdown-menu">
+							<div class="user-header">
+								<div class="avatar avatar-sm">
+									<img src="{% static 'adminwebsite/img/profiles/avatar-01.jpg' %}" alt="User Image" class="avatar-img rounded-circle">
+								</div>
+								<div class="user-text">
+									<h6>Ryan Taylor</h6>
+									<p class="text-muted mb-0">Administrator</p>
+								</div>
+							</div>
+							<a class="dropdown-item" href="profilew">My Profile</a>
+							<a class="dropdown-item" href="settings">Settings</a>
+							<a class="dropdown-item" href="loginw">Logout</a>
+						</div>
+					</li>
+					<!-- /User Menu -->
+					
+				</ul>
+				<!-- /Header Right Menu -->
+				
+            </div>
+			<!-- /Header -->
+			
+			<!-- Sidebar -->
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-inner slimscroll">
+					<div id="sidebar-menu" class="sidebar-menu">
+						<ul>
+							<li class="menu-title"> 
+								<span>Main</span>
+							</li>
+							<li class="active"> 
+								<a href="admin"><i class="fe fe-home"></i> <span>Dashboard</span></a>
+							</li>
+							<li> 
+								<a href="appointment-list"><i class="fe fe-layout"></i> <span>Appointments</span></a>
+							</li>
+							<li> 
+								<a href="specialities"><i class="fe fe-users"></i> <span>Specialities</span></a>
+							</li>
+							<li> 
+								<a href="doctor-list"><i class="fe fe-user-plus"></i> <span>Doctors</span></a>
+							</li>
+							<li> 
+								<a href="patient-list"><i class="fe fe-user"></i> <span>Patients</span></a>
+							</li>
+							<li> 
+								<a href="reviewsw"><i class="fe fe-star-o"></i> <span>Reviews</span></a>
+							</li>
+							<li> 
+								<a href="transactions-list"><i class="fe fe-activity"></i> <span>Transactions</span></a>
+							</li>
+							<li> 
+								<a href="settings"><i class="fe fe-vector"></i> <span>Settings</span></a>
+							</li>
+							<li class="submenu">
+								<a href="#"><i class="fe fe-document"></i> <span> Reports</span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a href="invoice-report">Invoice Reports</a></li>
+								</ul>
+							</li>
+							<li class="menu-title"> 
+								<span>Pages</span>
+							</li>
+							<li> 
+								<a href="profilew"><i class="fe fe-user-plus"></i> <span>Profile</span></a>
+							</li>
+							<li class="submenu">
+								<a href="#"><i class="fe fe-document"></i> <span> Authentication </span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a href="loginw"> Login </a></li>
+									<li><a href="registerw"> Register </a></li>
+									<li><a href="forgot-passwordw"> Forgot Password </a></li>
+									<li><a href="lock-screen"> Lock Screen </a></li>
+								</ul>
+							</li>
+							<li class="submenu">
+								<a href="#"><i class="fe fe-warning"></i> <span> Error Pages </span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a href="error-404">404 Error </a></li>
+									<li><a href="error-500">500 Error </a></li>
+								</ul>
+							</li>
+							<li> 
+								<a href="blank-pagew"><i class="fe fe-file"></i> <span>Blank Page</span></a>
+							</li>
+							<li class="menu-title"> 
+								<span>UI Interface</span>
+							</li>
+							<li> 
+								<a href="componentsw"><i class="fe fe-vector"></i> <span>Components</span></a>
+							</li>
+							<li class="submenu">
+								<a href="#"><i class="fe fe-layout"></i> <span> Forms </span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a href="form-basic-inputs">Basic Inputs </a></li>
+									<li><a href="form-input-groups">Input Groups </a></li>
+									<li><a href="form-horizontal">Horizontal Form </a></li>
+									<li><a href="form-vertical"> Vertical Form </a></li>
+									<li><a href="form-mask"> Form Mask </a></li>
+									<li><a href="form-validation"> Form Validation </a></li>
+								</ul>
+							</li>
+							<li class="submenu">
+								<a href="#"><i class="fe fe-table"></i> <span> Tables </span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a href="tables-basic">Basic Tables </a></li>
+									<li><a href="data-tables">Data Table </a></li>
+								</ul>
+							</li>
+							<li class="submenu">
+								<a href="javascript:void(0);"><i class="fe fe-code"></i> <span>Multi Level</span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li class="submenu">
+										<a href="javascript:void(0);"> <span>Level 1</span> <span class="menu-arrow"></span></a>
+										<ul style="display: none;">
+											<li><a href="javascript:void(0);"><span>Level 2</span></a></li>
+											<li class="submenu">
+												<a href="javascript:void(0);"> <span> Level 2</span> <span class="menu-arrow"></span></a>
+												<ul style="display: none;">
+													<li><a href="javascript:void(0);">Level 3</a></li>
+													<li><a href="javascript:void(0);">Level 3</a></li>
+												</ul>
+											</li>
+											<li><a href="javascript:void(0);"> <span>Level 2</span></a></li>
+										</ul>
+									</li>
+									<li>
+										<a href="javascript:void(0);"> <span>Level 1</span></a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+                </div>
+            </div>
+			<!-- /Sidebar -->
+			
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+			
+                <div class="content container-fluid">
+					
+					<!-- Doctor Details Tab -->
+<div class="card">
+	<div class="card-body pt-0">
+	
+		<!-- Tab Menu -->
+		<nav class="user-tabs mb-4">
+			<ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+				<li class="nav-item">
+					<a class="nav-link active" href="#doc_overview" data-toggle="tab">Address</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#doc_locations" data-toggle="tab">LIkes!!</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#doc_reviews" data-toggle="tab">Reviews</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#doc_business_hours" data-toggle="tab">Business Hours</a>
+				</li>
+			</ul>
+		</nav>
+		<!-- /Tab Menu -->
+		
+		<!-- Tab Content -->
+		<div class="tab-content pt-0">
+		
+			<!-- Overview Content -->
+			<div role="tabpanel" id="doc_overview" class="tab-pane fade show active">
+				<div class="row">
+					<div class="col-md-12 col-lg-9">
+					
+						<!-- About Details -->
+						<div class="widget about-widget">
+							<h4 class="widget-title">About Me</h4>
+							<p>{{detail.Biography}}</p>
+						</div>
+						<!-- /About Details -->
+					
+						<!-- Education Details -->
+						<div class="widget education-widget">
+							<h4 class="widget-title">Education</h4>
+							<div class="experience-box">
+								<ul class="experience-list">
+									<li>
+										<div class="experience-user">
+											<div class="before-circle"></div>
+										</div>
+										<div class="experience-content">
+											<div class="timeline-content">
+												<a href="#/" class="name">{{detail.Degree}}</a>
+												<div>{{detail.College_Institute}}</div>
+												<span class="time">{{detail.Year_of_Completion}}</span>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="experience-user">
+											<div class="before-circle"></div>
+										</div>
+										<div class="experience-content">
+											<div class="timeline-content">
+												<a href="#/" class="name"></a>
+												<div>MDS</div>
+												<span class="time">{{detail.From}} -{{detail.To}}</span>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!-- /Education Details -->
+				
+						<!-- Experience Details -->
+						<div class="widget experience-widget">
+							<h4 class="widget-title">Work & Experience</h4>
+							<div class="experience-box">
+								<ul class="experience-list">
+									<li>
+										<div class="experience-user">
+											<div class="before-circle"></div>
+										</div>
+										<div class="experience-content">
+											<div class="timeline-content">
+												<a href="#/" class="name"></a>
+												<span class="time"></span>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="experience-user">
+											<div class="before-circle"></div>
+										</div>
+										<div class="experience-content">
+											<div class="timeline-content">
+												<a href="#/" class="name"></a>
+												<span class="time"></span>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="experience-user">
+											<div class="before-circle"></div>
+										</div>
+										<div class="experience-content">
+											<div class="timeline-content">
+												<a href="#/" class="name">{{detail.Hospital_Name}}</a>
+												<span class="time">{{detail.From}} - {{detail.To}}</span>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!-- /Experience Details -->
+			
+						<!-- Awards Details -->
+						<div class="widget awards-widget">
+							<h4 class="widget-title">Awards</h4>
+							<div class="experience-box">
+								<ul class="experience-list">
+									<li>
+										<div class="experience-user">
+											<div class="before-circle"></div>
+										</div>
+										<div class="experience-content">
+											<div class="timeline-content">
+												<p class="exp-year">{{detail.Year_of_Completion}}</p>
+												<h4 class="exp-title">{{detail.Hospital_Name}}</h4>
+												<p>{{detail.Designation}}</p>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="experience-user">
+											<div class="before-circle"></div>
+										</div>
+										<div class="experience-content">
+											<div class="timeline-content">
+												<p class="exp-year">{{detail.Awards}}</p>
+												<h4 class="exp-title">{{detail.Registrations}}</h4>
+												<p>{{detail.Year_of_Registration}}</p>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="experience-user">
+											<div class="before-circle"></div>
+										</div>
+										<div class="experience-content">
+											<div class="timeline-content">
+												<p class="exp-year">{{detail.Year}}</p>
+												<h4 class="exp-title">The Dental Professional of The Year Award</h4>
+												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a ipsum tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!-- /Awards Details -->
+						
+						<!-- Services List -->
+						<div class="service-list">
+							<h4>Services</h4>
+							<ul class="clearfix">
+								<li>{{detail.Services}}</li>
+								<li>Root Canal Therapy</li>
+								<li>Implants</li>
+								<li>Composite Bonding</li>
+								<li>Fissure Sealants</li>
+								<li>Surgical Extractions</li>
+							</ul>
+						</div>
+						<!-- /Services List -->
+						
+						<!-- Specializations List -->
+						<div class="service-list">
+							<h4>Specializations</h4>
+							<ul class="clearfix">
+								<li>{{detail.Specialization}}</li>
+								<li>Dental Care</li>	
+								<li>Oral and Maxillofacial Surgery </li>	
+								<li>Orthodontist</li>	
+								<li>Periodontist</li>	
+								<li>Prosthodontics</li>	
+							</ul>
+						</div>
+						<!-- /Specializations List -->
+
+					</div>
+				</div>
+			</div>
+			<!-- /Overview Content -->
+			
+			<!-- Locations Content -->
+			<div role="tabpanel" id="doc_locations" class="tab-pane fade">
+			
+				<!-- Location List -->
+				<div class="location-list">
+					<div class="row">
+					
+						<!-- Clinic Content -->
+						<div class="col-md-6">
+							<div class="clinic-content">
+								<h4 class="clinic-name"><a href="#">{{detail.clinic_name}}</a></h4>
+								<p class="doc-speciality">MDS - Periodontology and Oral Implantology, BDS</p>
+								<div class="rating">
+									<i class="fas fa-star filled"></i>
+									<i class="fas fa-star filled"></i>
+									<i class="fas fa-star filled"></i>
+									<i class="fas fa-star filled"></i>
+									<i class="fas fa-star"></i>
+									<span class="d-inline-block average-rating">(4)</span>
+								</div>
+								<div class="clinic-details mb-0">
+									<h5 class="clinic-direction"> <i class="fas fa-map-marker-alt"></i> 2286  Sundown Lane, Austin, Texas 78749, USA <br><a href="javascript:void(0);">Get Directions</a></h5>
+									<ul>
+										<li>
+											<a href="{% static 'website/img/features/feature-01.jpg' %}" data-fancybox="gallery2">
+												<img src="{% static 'website/img/features/feature-01.jpg' %}" alt="Feature Image">
+											</a>
+										</li>
+										<li>
+											<a href="{% static 'website/img/features/feature-02.jpg' %}" data-fancybox="gallery2">
+												<img src="{% static 'website/img/features/feature-02.jpg' %}" alt="Feature Image">
+											</a>
+										</li>
+										<li>
+											<a href="{% static 'website/img/features/feature-03.jpg' %}" data-fancybox="gallery2">
+												<img src="{% static 'website/img/features/feature-03.jpg' %}" alt="Feature Image">
+											</a>
+										</li>
+										<li>
+											<a href="{% static 'website/img/features/feature-04.jpg' %}" data-fancybox="gallery2">
+												<img src="{% static 'website/img/features/feature-04.jpg' %}" alt="Feature Image">
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!-- /Clinic Content -->
+						
+						<!-- Clinic Timing -->
+						<div class="col-md-4">
+							<div class="clinic-timing">
+								<div>
+									<p class="timings-days">
+										<span> Mon - Sat </span>
+									</p>
+									<p class="timings-times">
+										<span>10:00 AM - 2:00 PM</span>
+										<span>4:00 PM - 9:00 PM</span>
+									</p>
+								</div>
+								<div>
+								<p class="timings-days">
+									<span>Sun</span>
+								</p>
+								<p class="timings-times">
+									<span>10:00 AM - 2:00 PM</span>
+								</p>
+								</div>
+							</div>
+						</div>
+						<!-- /Clinic Timing -->
+						
+						<div class="col-md-2">
+							<div class="consult-price">
+								$250
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /Location List -->
+				
+				<!-- Location List -->
+				<div class="location-list">
+					<div class="row">
+					
+						<!-- Clinic Content -->
+						<div class="col-md-6">
+							<div class="clinic-content">
+								<h4 class="clinic-name"><a href="#">The Family Dentistry Clinic</a></h4>
+								<p class="doc-speciality">MDS - Periodontology and Oral Implantology, BDS</p>
+								<div class="rating">
+									<i class="fas fa-star filled"></i>
+									<i class="fas fa-star filled"></i>
+									<i class="fas fa-star filled"></i>
+									<i class="fas fa-star filled"></i>
+									<i class="fas fa-star"></i>
+									<span class="d-inline-block average-rating">(4)</span>
+								</div>
+								<div class="clinic-details mb-0">
+									<p class="clinic-direction"> <i class="fas fa-map-marker-alt"></i> 2883  University Street, Seattle, Texas Washington, 98155 <br><a href="javascript:void(0);">Get Directions</a></p>
+									<ul>
+										<li>
+											<a href="{% static 'website/img/features/feature-01.jpg' %}" data-fancybox="gallery2">
+												<img src="{% static 'website/img/features/feature-01.jpg' %}" alt="Feature Image">
+											</a>
+										</li>
+										<li>
+											<a href="{% static 'website/img/features/feature-02.jpg' %}" data-fancybox="gallery2">
+												<img src="{% static 'website/img/features/feature-02.jpg' %}" alt="Feature Image">
+											</a>
+										</li>
+										<li>
+											<a href="{% static 'website/img/features/feature-03.jpg' %}" data-fancybox="gallery2">
+												<img src="{% static 'website/img/features/feature-03.jpg' %}" alt="Feature Image">
+											</a>
+										</li>
+										<li>
+											<a href="{% static 'website/img/features/feature-04.jpg' %}" data-fancybox="gallery2">
+												<img src="{% static 'website/img/features/feature-04.jpg' %}" alt="Feature Image">
+											</a>
+										</li>
+									</ul>
+								</div>
+
+							</div>
+						</div>
+						<!-- /Clinic Content -->
+						
+						<!-- Clinic Timing -->
+						<div class="col-md-4">
+							<div class="clinic-timing">
+								<div>
+									<p class="timings-days">
+										<span> Tue - Fri </span>
+									</p>
+									<p class="timings-times">
+										<span>11:00 AM - 1:00 PM</span>
+										<span>6:00 PM - 11:00 PM</span>
+									</p>
+								</div>
+								<div>
+									<p class="timings-days">
+										<span>Sat - Sun</span>
+									</p>
+									<p class="timings-times">
+										<span>8:00 AM - 10:00 AM</span>
+										<span>3:00 PM - 7:00 PM</span>
+									</p>
+								</div>
+							</div>
+						</div>
+						<!-- /Clinic Timing -->
+						
+						<div class="col-md-2">
+							<div class="consult-price">
+								$350
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /Location List -->
+
+			</div>
+			<!-- /Locations Content -->
+			
+			<!-- Reviews Content -->
+			<div role="tabpanel" id="doc_reviews" class="tab-pane fade">
+			
+				<!-- Review Listing -->
+				<div class="widget review-listing">
+					<ul class="comments-list">
+					
+						<!-- Comment List -->
+						<li>
+							<div class="comment">
+								<img class="avatar avatar-sm rounded-circle" alt="User Image" src="{% static 'website/img/patients/patient.jpg' %}">
+								<div class="comment-body">
+									<div class="meta-data">
+										<span class="comment-author">Richard Wilson</span>
+										<span class="comment-date">Reviewed 2 Days ago</span>
+										<div class="review-count rating">
+											<i class="fas fa-star filled"></i>
+											<i class="fas fa-star filled"></i>
+											<i class="fas fa-star filled"></i>
+											<i class="fas fa-star filled"></i>
+											<i class="fas fa-star"></i>
+										</div>
+									</div>
+									<p class="recommended"><i class="far fa-thumbs-up"></i> I recommend the doctor</p>
+									<p class="comment-content">
+										Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+										sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+										Ut enim ad minim veniam, quis nostrud exercitation.
+										Curabitur non nulla sit amet nisl tempus
+									</p>
+									<div class="comment-reply">
+										<a class="comment-btn" href="#">
+											<i class="fas fa-reply"></i> Reply
+										</a>
+									   <p class="recommend-btn">
+										<span>Recommend?</span>
+										<a href="#" class="like-btn">
+											<i class="far fa-thumbs-up"></i> Yes
+										</a>
+										<a href="#" class="dislike-btn">
+											<i class="far fa-thumbs-down"></i> No
+										</a>
+									</p>
+									</div>
+								</div>
+							</div>
+							
+							<!-- Comment Reply -->
+							<ul class="comments-reply">
+								<li>
+									<div class="comment">
+										<img class="avatar avatar-sm rounded-circle" alt="User Image" src="{% static 'website/img/patients/patient1.jpg' %}">
+										<div class="comment-body">
+											<div class="meta-data">
+												<span class="comment-author">Charlene Reed</span>
+												<span class="comment-date">Reviewed 3 Days ago</span>
+												<div class="review-count rating">
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star"></i>
+												</div>
+											</div>
+											<p class="comment-content">
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+												sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+												Ut enim ad minim veniam.
+												Curabitur non nulla sit amet nisl tempus
+											</p>
+											<div class="comment-reply">
+												<a class="comment-btn" href="#">
+													<i class="fas fa-reply"></i> Reply
+												</a>
+												<p class="recommend-btn">
+													<span>Recommend?</span>
+													<a href="#" class="like-btn">
+														<i class="far fa-thumbs-up"></i> Yes
+													</a>
+													<a href="#" class="dislike-btn">
+														<i class="far fa-thumbs-down"></i> No
+													</a>
+												</p>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<!-- /Comment Reply -->
+							
+						</li>
+						<!-- /Comment List -->
+						
+						<!-- Comment List -->
+						<li>
+							<div class="comment">
+								<img class="avatar avatar-sm rounded-circle" alt="User Image" src="{% static 'website/img/patients/patient2.jpg' %}">
+								<div class="comment-body">
+									<div class="meta-data">
+										<span class="comment-author">Travis Trimble</span>
+										<span class="comment-date">Reviewed 4 Days ago</span>
+										<div class="review-count rating">
+											<i class="fas fa-star filled"></i>
+											<i class="fas fa-star filled"></i>
+											<i class="fas fa-star filled"></i>
+											<i class="fas fa-star filled"></i>
+											<i class="fas fa-star"></i>
+										</div>
+									</div>
+									<p class="comment-content">
+										Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+										sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+										Ut enim ad minim veniam, quis nostrud exercitation.
+										Curabitur non nulla sit amet nisl tempus
+									</p>
+									<div class="comment-reply">
+										<a class="comment-btn" href="#">
+											<i class="fas fa-reply"></i> Reply
+										</a>
+										<p class="recommend-btn">
+											<span>Recommend?</span>
+											<a href="#" class="like-btn">
+												<i class="far fa-thumbs-up"></i> Yes
+											</a>
+											<a href="#" class="dislike-btn">
+												<i class="far fa-thumbs-down"></i> No
+											</a>
+										</p>
+									</div>
+								</div>
+							</div>
+						</li>
+						<!-- /Comment List -->
+						
+					</ul>
+					
+					<!-- Show All -->
+					<div class="all-feedback text-center">
+						<a href="#" class="btn btn-primary btn-sm">
+							Show all feedback <strong>(167)</strong>
+						</a>
+					</div>
+					<!-- /Show All -->
+					
+				</div>
+				<!-- /Review Listing -->
+			
+				<!-- Write Review -->
+				<div class="write-review">
+					<h4>Write a review for <strong>Dr. Darren Elder</strong></h4>
+					
+					<!-- Write Review Form -->
+					<form>
+						<div class="form-group">
+							<label>Review</label>
+							<div class="star-rating">
+								<input id="star-5" type="radio" name="rating" value="star-5">
+								<label for="star-5" title="5 stars">
+									<i class="active fa fa-star"></i>
+								</label>
+								<input id="star-4" type="radio" name="rating" value="star-4">
+								<label for="star-4" title="4 stars">
+									<i class="active fa fa-star"></i>
+								</label>
+								<input id="star-3" type="radio" name="rating" value="star-3">
+								<label for="star-3" title="3 stars">
+									<i class="active fa fa-star"></i>
+								</label>
+								<input id="star-2" type="radio" name="rating" value="star-2">
+								<label for="star-2" title="2 stars">
+									<i class="active fa fa-star"></i>
+								</label>
+								<input id="star-1" type="radio" name="rating" value="star-1">
+								<label for="star-1" title="1 star">
+									<i class="active fa fa-star"></i>
+								</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<label>Title of your review</label>
+							<input class="form-control" type="text" placeholder="If you could say it in one sentence, what would you say?">
+						</div>
+						<div class="form-group">
+							<label>Your review</label>
+							<textarea id="review_desc" maxlength="100" class="form-control"></textarea>
+						  
+						  <div class="d-flex justify-content-between mt-3"><small class="text-muted"><span id="chars">100</span> characters remaining</small></div>
+						</div>
+						<hr>
+						<div class="form-group">
+							<div class="terms-accept">
+								<div class="custom-checkbox">
+								   <input type="checkbox" id="terms_accept">
+								   <label for="terms_accept">I have read and accept <a href="#">Terms &amp; Conditions</a></label>
+								</div>
+							</div>
+						</div>
+						<div class="submit-section">
+							<button type="submit" class="btn btn-primary submit-btn">Add Review</button>
+						</div>
+					</form>
+					<!-- /Write Review Form -->
+					
+				</div>
+				<!-- /Write Review -->
+	
+			</div>
+			<!-- /Reviews Content -->
+			
+			<!-- Business Hours Content -->
+			<div role="tabpanel" id="doc_business_hours" class="tab-pane fade">
+				<div class="row">
+					<div class="col-md-6 offset-md-3">
+					
+						<!-- Business Hours Widget -->
+						<div class="widget business-widget">
+							<div class="widget-content">
+								<div class="listing-hours">
+									<div class="listing-day current">
+										<div class="day">Today <span>5 Nov 2019</span></div>
+										<div class="time-items">
+											<span class="open-status"><span class="badge bg-success-light">Open Now</span></span>
+											<span class="time">07:00 AM - 09:00 PM</span>
+										</div>
+									</div>
+									<div class="listing-day">
+										<div class="day">Monday</div>
+										<div class="time-items">
+											<span class="time">07:00 AM - 09:00 PM</span>
+										</div>
+									</div>
+									<div class="listing-day">
+										<div class="day">Tuesday</div>
+										<div class="time-items">
+											<span class="time">07:00 AM - 09:00 PM</span>
+										</div>
+									</div>
+									<div class="listing-day">
+										<div class="day">Wednesday</div>
+										<div class="time-items">
+											<span class="time">07:00 AM - 09:00 PM</span>
+										</div>
+									</div>
+									<div class="listing-day">
+										<div class="day">Thursday</div>
+										<div class="time-items">
+											<span class="time">07:00 AM - 09:00 PM</span>
+										</div>
+									</div>
+									<div class="listing-day">
+										<div class="day">Friday</div>
+										<div class="time-items">
+											<span class="time">07:00 AM - 09:00 PM</span>
+										</div>
+									</div>
+									<div class="listing-day">
+										<div class="day">Saturday</div>
+										<div class="time-items">
+											<span class="time">07:00 AM - 09:00 PM</span>
+										</div>
+									</div>
+									<div class="listing-day closed">
+										<div class="day">Sunday</div>
+										<div class="time-items">
+											<span class="time"><span class="badge bg-danger-light">Closed</span></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- /Business Hours Widget -->
+				
+					</div>
+				</div>
+			</div>
+			<!-- /Business Hours Content -->
+			
+		</div>
+	</div>
+</div>
+<!-- /Doctor Details Tab -->
+
+					
+		
+					
+					</div>
+					
+				</div>			
+			</div>
+			<!-- /Page Wrapper -->
+		
+        </div>
+		<!-- /Main Wrapper -->
+		
+		<!-- jQuery -->
+        <script src="{% static 'adminwebsite/js/jquery-3.2.1.min.js' %}"></script>
+		
+		<!-- Bootstrap Core JS -->
+        <script src="{% static 'adminwebsite/js/popper.min.js' %}"></script>
+        <script src="{% static 'adminwebsite/js/bootstrap.min.js' %}"></script>
+		
+		<!-- Slimscroll JS -->
+        <script src="{% static 'adminwebsite/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+		
+		<script src="{% static 'adminwebsite/plugins/raphael/raphael.min.js' %}"></script>    
+		<script src="{% static 'adminwebsite/plugins/morris/morris.min.js' %}"></script>  
+		<script src="{% static 'adminwebsite/js/chart.morris.js' %}"></script>
+		
+		<!-- Custom JS -->
+		<script  src="{% static 'adminwebsite/js/script.js' %}"></script>
+		
+    </body>
+
+<!-- Mirrored from dreamguys.co.in/demo/doccure/admin/admin by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:34 GMT -->
+</html>

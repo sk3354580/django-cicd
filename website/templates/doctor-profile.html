@@ -1,0 +1,280 @@
+{% extends 'websitelayout.html' %}
+{% load static %}
+{% block content %}
+
+			
+			<!-- Breadcrumb -->
+			<div class="breadcrumb-bar">
+				<div class="container-fluid">
+					<div class="row align-items-center">
+						<div class="col-md-12 col-12">
+							<nav aria-label="breadcrumb" class="page-breadcrumb">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Doctor Profile</li>
+								</ol>
+							</nav>
+							<h2 class="breadcrumb-title">Doctor Profile</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+			
+			<!-- Page Content -->
+			<div class="content">
+				<div class="container">
+
+					<!-- Doctor Widget -->
+					<div class="card">
+						<div class="card-body">
+							<div class="doctor-widget">
+								<div class="doc-info-left">
+									<div class="doctor-img">
+										<img src="{{DOctorProFile.doctor_images.url}}" class="img-fluid" alt="User Image">
+									</div>
+									<div class="doc-info-cont">
+										<h4 class="doc-name">{{DOctorProFile.username}}</h4>
+										<p class="doc-speciality">{{DOctorProFile.phoneNumber}}</p>
+
+										<p class="doc-department"><img src="{% static 'website/img/specialities/specialities-05.png' %}" class="img-fluid" alt="Speciality">{{DOctorProFile.Specialiazation}}</p>
+
+										<div class="clinic-details">
+											<p class="doc-location"><i class="fas fa-map-marker-alt"></i> {{DOctorProFile.Address_line1}}</p>
+											<ul class="clinic-gallery">
+												<li>
+													<a href="{% static 'website/img/features/feature-01.jpg' %}" data-fancybox="gallery">
+														<img src="{{DOctorProFile.clinic_images.url}}" alt="Feature">
+													</a>
+												</li>
+
+											</ul>
+										</div>
+										<div class="clinic-services">
+											<span>{{DOctorProFile.Services}}</span>
+											<span>{{DOctorProFile.Services}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="doc-info-right">
+									<div class="clini-infos">
+										<ul>
+
+											<li><i class="fas fa-map-marker-alt"></i> {{DOctorProFile.clinic_address}}</li>
+											<li><i class="far fa-money-bill-alt"></i> {{DOctorProFile.consultation_fees}} </li>
+										</ul>
+									</div>
+									<div class="doctor-action">
+
+										<a href="javascript:void(0)" class="btn btn-white call-btn" data-toggle="modal" data-target="#voice_call">
+											<i class="fas fa-phone"></i>
+										</a>
+
+
+										<a href="{% url 'videocall' DOctorProFile.id %}" class="btn btn-white call-btn"  data-target="#video_call">
+											<i class="fas fa-video"></i>
+										</a>
+									</div>
+									<div class="clinic-booking">
+										{% if user.user_type == '3' %}
+																				<a class="apt-btn" href="{% url 'bookings' DOctorProFile.id %}">Book Appointment</a>
+
+										{% endif %}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /Doctor Widget -->
+					
+					<!-- Doctor Details Tab -->
+					<div class="card">
+						<div class="card-body pt-0">
+						
+							<!-- Tab Menu -->
+							<nav class="user-tabs mb-4">
+								<ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+									<li class="nav-item">
+										<a class="nav-link active" href="#doc_overview" data-toggle="tab">Other Details</a>
+									</li>
+
+
+								</ul>
+							</nav>
+							<!-- /Tab Menu -->
+							
+							<!-- Tab Content -->
+							<div class="tab-content pt-0">
+							
+								<!-- Overview Content -->
+								<div role="tabpanel" id="doc_overview" class="tab-pane fade show active">
+									<div class="row">
+										<div class="col-md-12 col-lg-9">
+										
+											<!-- About Details -->
+											<div class="widget about-widget">
+												<h4 class="widget-title">About Me</h4>
+												<p>{{detail.Biography}}</p>
+											</div>
+											<!-- /About Details -->
+										
+											<!-- Education Details -->
+											<div class="widget education-widget">
+												<h4 class="widget-title">Education</h4>
+												<div class="experience-box">
+													<ul class="experience-list">
+														<li>
+															<div class="experience-user">
+																<div class="before-circle"></div>
+															</div>
+															<div class="experience-content">
+																<div class="timeline-content">
+																	<a href="#/" class="name">{{DOctorProFile.Degree}}</a>
+																	<div>{{detail.College_Institute}}</div>
+																	<span class="time">{{detail.Year_of_Completion}}</span>
+																</div>
+															</div>
+														</li>
+														<li>
+															<div class="experience-user">
+																<div class="before-circle"></div>
+															</div>
+															<div class="experience-content">
+																<div class="timeline-content">
+
+
+																	<span class="time">{{DOctorProFile.From}} -{{DOctorProFile.To}}</span>
+																</div>
+															</div>
+														</li>
+													</ul>
+												</div>
+											</div>
+											<!-- /Education Details -->
+									
+											<!-- Experience Details -->
+											<div class="widget experience-widget">
+												<h4 class="widget-title">Work & Experience</h4>
+												<div class="experience-box">
+													<ul class="experience-list">
+														<li>
+															<div class="experience-user">
+																<div class="before-circle"></div>
+															</div>
+															<div class="experience-content">
+																<div class="timeline-content">
+																	<a href="#/" class="name"></a>
+																	<span class="time"></span>
+																</div>
+															</div>
+														</li>
+														<li>
+															<div class="experience-user">
+																<div class="before-circle"></div>
+															</div>
+															<div class="experience-content">
+																<div class="timeline-content">
+																	<a href="#/" class="name"></a>
+																	<span class="time"></span>
+																</div>
+															</div>
+														</li>
+														<li>
+															<div class="experience-user">
+																<div class="before-circle"></div>
+															</div>
+															<div class="experience-content">
+																<div class="timeline-content">
+																	<a href="#/" class="name">{{DOctorProFile.Hospital_Name}}</a>
+																	<span class="time">{{DOctorProFile.From}} - {{DOctorProFile.To}}</span>
+																</div>
+															</div>
+														</li>
+													</ul>
+												</div>
+											</div>
+											<!-- /Experience Details -->
+								
+											<!-- Awards Details -->
+											<div class="widget awards-widget">
+												<h4 class="widget-title">Awards</h4>
+												<div class="experience-box">
+													<ul class="experience-list">
+														<li>
+															<div class="experience-user">
+																<div class="before-circle"></div>
+															</div>
+															<div class="experience-content">
+																<div class="timeline-content">
+																	<p class="exp-year">{{DOctorProFile.Year_of_Completion}}</p>
+																	<h4 class="exp-title">{{DOctorProFile.Hospital_Name}}</h4>
+																	<p>{{DOctorProFile.Designation}}</p>
+																</div>
+															</div>
+														</li>
+														<li>
+															<div class="experience-user">
+																<div class="before-circle"></div>
+															</div>
+															<div class="experience-content">
+																<div class="timeline-content">
+																	<p class="exp-year">{{DOctorProFile.Awards}}</p>
+																	<h4 class="exp-title">{{DOctorProFile.Registrations}}</h4>
+																	<p>{{DOctorProFile.Year_of_Registration}}</p>
+																</div>
+															</div>
+														</li>
+														<li>
+															<div class="experience-user">
+																<div class="before-circle"></div>
+															</div>
+															<div class="experience-content">
+																<div class="timeline-content">
+																	<p class="exp-year">{{DOctorProFile.Year}}</p>
+																	<h4 class="exp-title">{{DOctorProFile.Awards}}</h4>
+																</div>
+															</div>
+														</li>
+													</ul>
+												</div>
+											</div>
+											<!-- /Awards Details -->
+											
+											<!-- Services List -->
+											<div class="service-list">
+												<h4>Services</h4>
+												<ul class="clearfix">
+													<li>{{DOctorProFile.Services}}</li>
+
+												</ul>
+											</div>
+											<!-- /Services List -->
+											
+											<!-- Specializations List -->
+											<div class="service-list">
+												<h4>Specializations</h4>
+												<ul class="clearfix">
+													<li>{{DOctorProFile.Specialiazation}}</li>
+
+												</ul>
+											</div>
+											<!-- /Specializations List -->
+
+										</div>
+									</div>
+								</div>
+								<!-- /Overview Content -->
+
+								<!-- Reviews Content -->
+
+								<!-- /Reviews Content -->
+							</div>
+						</div>
+					</div>
+					<!-- /Doctor Details Tab -->
+
+				</div>
+			</div>		
+			<!-- /Page Content -->
+   {% include "footer.html" %}
+			{% endblock %}

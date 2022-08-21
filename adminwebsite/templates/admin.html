@@ -1,0 +1,259 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+			
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+			
+                <div class="content container-fluid">
+					
+					<!-- Page Header -->
+					<div class="page-header">
+						<div class="row">
+							<div class="col-sm-12">
+								<h3 class="page-title">Welcome Admin!</h3>
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item active">Dashboard</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- /Page Header -->
+
+					<div class="row">
+						<div class="col-xl-4 col-sm-6 col-12">
+							<div class="card">
+								<div class="card-body">
+									<div class="dash-widget-header">
+										<span class="dash-widget-icon text-primary border-primary">
+											<i class="fe fe-users"></i>
+										</span>
+										<div class="dash-count">
+											<h3> {{ countdoctor }} </h3>
+										</div>
+									</div>
+									<div class="dash-widget-info">
+										<h6 class="text-muted">Doctors</h6>
+										<div class="progress progress-sm">
+											<div class="progress-bar bg-primary w-50"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-4 col-sm-6 col-12">
+							<div class="card">
+								<div class="card-body">
+									<div class="dash-widget-header">
+										<span class="dash-widget-icon text-success">
+											<i class="fe fe-credit-card"></i>
+										</span>
+										<div class="dash-count">
+											<h3>{{ countpatient }} </h3>
+										</div>
+									</div>
+									<div class="dash-widget-info">
+										
+										<h6 class="text-muted">Patients</h6>
+										<div class="progress progress-sm">
+											<div class="progress-bar bg-success w-50"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-4 col-sm-6 col-12">
+							<div class="card">
+								<div class="card-body">
+									<div class="dash-widget-header">
+										<span class="dash-widget-icon text-danger border-danger">
+											<i class="fe fe-money"></i>
+										</span>
+										<div class="dash-count">
+											<h3>{{ countappointment }} </h3>
+										</div>
+									</div>
+									<div class="dash-widget-info">
+										
+										<h6 class="text-muted">Appointment</h6>
+										<div class="progress progress-sm">
+											<div class="progress-bar bg-danger w-50"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="row">
+						<div class="col-md-6 d-flex">
+						
+							<!-- Recent Orders -->
+
+							<div class="card card-table flex-fill">
+								<div class="card-header">
+									<h4 class="card-title">Doctors List</h4>
+								</div>
+								<div class="card-body">
+									<div class="table-responsive">
+										<table class="table table-hover table-center mb-0">
+											<thead>
+												<tr>
+													<th>Doctor Name</th>
+													<th>Speciality</th>
+													<th>Address</th>
+
+												</tr>
+											</thead>
+											{% for i in allDoctors %}
+											<tbody>
+
+												<tr>
+													<td>
+														<h2 class="table-avatar">
+															<a href="{% url 'profilew' i.id %}" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{{i.doctor_images.url}}" alt="User Image"></a>
+															<a href="{% url 'profilew' i.id %}">{{i.username}}</a>
+														</h2>
+													</td>
+													<td>{{i.Specialiazation}}</td>
+													<td>{{i.Address_line1}}</td>
+
+												</tr>
+
+											</tbody>
+											{% endfor %}
+										</table>
+									</div>
+								</div>
+							</div>
+
+							<!-- /Recent Orders -->
+							
+						</div>
+						<div class="col-md-6 d-flex">
+						
+							<!-- Feed Activity -->
+							<div class="card  card-table flex-fill">
+								<div class="card-header">
+									<h4 class="card-title">Patients List</h4>
+								</div>
+								<div class="card-body">
+									<div class="table-responsive">
+										<table class="table table-hover table-center mb-0">
+											<thead>
+												<tr>													
+													<th>Patient Name</th>
+													<th>Phone</th>
+													<th>Address</th>
+
+												</tr>
+											</thead>
+											{% for p in allPatients %}
+											<tbody>
+												<tr>
+													<td>
+														<h2 class="table-avatar">
+															<a href="{% url 'patientProfileshow' p.id %}" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{{p.patient_images.url}}" alt="User Image"></a>
+															<a href="{% url 'patientProfileshow' p.id %}">{{p.first_name}}</a>
+														</h2>
+													</td>
+													<td>{{p.phoneNumber}}</td>
+													<td>{{p.Address}}</td>
+
+												</tr>
+											</tbody>
+											{% endfor %}
+										</table>
+									</div>
+								</div>
+							</div>
+							<!-- /Feed Activity -->
+							
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+						
+							<!-- Recent Orders -->
+							<div class="card card-table">
+								<div class="card-header">
+									<h4 class="card-title">Appointment List</h4>
+								</div>
+								<div class="card-body">
+									<div class="table-responsive">
+										<table class="table table-hover table-center mb-0">
+											<thead>
+												<tr>
+													<th>Doctor Name</th>
+													<th>Speciality</th>
+													<th>Patient Name</th>
+													<th>Apointment Time</th>
+
+													<th class="text-right">Amount</th>
+												</tr>
+											</thead>
+											{% for appointment in allappointments %}
+											<tbody>
+
+												<tr>
+													<td>
+														<h2 class="table-avatar">
+															<a href="{% url 'profilew' appointment.appointment_doctor_id.id %}" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{{appointment.appointment_doctor_id.doctor_images.url}}" alt="User Image"></a>
+															<a href="{% url 'profilew' appointment.appointment_doctor_id.id %}">{{appointment.appointment_doctor_id.username}}</a>
+														</h2>
+													</td>
+													<td>{{appointment.appointment_doctor_id.Specialiazation}}</td>
+													<td>
+														<h2 class="table-avatar">
+															<a href="{% url 'patientProfileshow' appointment.appointment_patient_id.id %}" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{{appointment.appointment_patient_id.patient_images.url}}" alt="User Image"></a>
+															<a href="{% url 'patientProfileshow' appointment.appointment_patient_id.id %}">{{appointment.appointment_patient_id.first_name}}</a>
+														</h2>
+													</td>
+													<td>{{appointment.date}}<span class="text-primary d-block">{{appointment.from_time}} - {{appointment.to_time}}</span></td>
+
+													<td class="text-right">
+														{{appointment.amount_paid}}
+													</td>
+												</tr> 
+												
+											</tbody>
+											{% endfor %}
+										</table>
+									</div>
+								</div>
+							</div>
+							<!-- /Recent Orders -->
+							
+						</div>
+					</div>
+					
+				</div>			
+			</div>
+			<!-- /Page Wrapper -->
+		
+        </div>
+		<!-- /Main Wrapper -->
+		
+		<!-- jQuery -->
+        <script src="{% static 'adminwebsite/js/jquery-3.2.1.min.js' %}"></script>
+		
+		<!-- Bootstrap Core JS -->
+        <script src="{% static 'adminwebsite/js/popper.min.js' %}"></script>
+        <script src="{% static 'adminwebsite/js/bootstrap.min.js' %}"></script>
+		
+		<!-- Slimscroll JS -->
+        <script src="{% static 'adminwebsite/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+		
+		<script src="{% static 'adminwebsite/plugins/raphael/raphael.min.js' %}"></script>    
+		<script src="{% static 'adminwebsite/plugins/morris/morris.min.js' %}"></script>  
+		<script src="{% static 'adminwebsite/js/chart.morris.js' %}"></script>
+		
+		<!-- Custom JS -->
+		<script  src="{% static 'adminwebsite/js/script.js' %}"></script>
+		
+    </body>
+
+<!-- Mirrored from dreamguys.co.in/demo/doccure/admin/admin by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:34 GMT -->
+</html>
+{% endblock %}

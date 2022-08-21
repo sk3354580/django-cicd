@@ -1,0 +1,239 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- doccure/login  30 Nov 2019 04:12:20 GMT -->
+<head>
+		<meta charset="utf-8">
+		<title>Doccure</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+		<!-- Favicons -->
+		<link href="{% static 'website/img/favicon.png' %}" rel="icon">
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'website/css/bootstrap.min.css' %}">
+
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="{% static 'website/plugins/fontawesome/css/fontawesome.min.css' %}">
+		<link rel="stylesheet" href="{% static 'website/plugins/fontawesome/css/all.min.css' %}">
+
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="{% static 'website/css/style.css' %}">
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="{% static 'website/js/html5shiv.min.js"></script>
+			<script src="{% static 'website/js/respond.min.js"></script>
+		<![endif]-->
+
+	</head>
+	<body class="account-page">
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper">
+
+			<!-- Header -->
+			<header class="header">
+				<nav class="navbar navbar-expand-lg header-nav">
+					<div class="navbar-header">
+						<a id="mobile_btn" href="javascript:void(0);">
+							<span class="bar-icon">
+								<span></span>
+								<span></span>
+								<span></span>
+							</span>
+						</a>
+						<a href="index-2" class="navbar-brand logo">
+							<img src="{% static 'website/img/logo.png' %}" class="img-fluid" alt="Logo">
+						</a>
+					</div>
+					<div class="main-menu-wrapper">
+						<div class="menu-header">
+							<a href="{% url 'index' %}" class="menu-logo">
+								<img src="{% static 'website/img/logo.png' %}" class="img-fluid" alt="Logo">
+							</a>
+							<a id="menu_close" class="menu-close" href="javascript:void(0);">
+								<i class="fas fa-times"></i>
+							</a>
+						</div>
+						<ul class="main-nav">
+							<li>
+								<a href="{% url 'index' %}">Home</a>
+							</li>
+
+
+
+
+
+						</ul>
+					</div>
+					<ul class="nav header-navbar-rht">
+						<li class="nav-item contact-item">
+							<div class="header-contact-img">
+								<i class="far fa-hospital"></i>
+							</div>
+							<div class="header-contact-detail">
+								<p class="contact-header">Contact</p>
+								<p class="contact-info-header"> +1 6239739375</p>
+							</div>
+						</li>
+<!--						<li class="nav-item">-->
+<!--							<a class="nav-link header-login" href="login">login / Signup </a>-->
+<!--						</li>-->
+					</ul>
+				</nav>
+			</header>
+			<!-- /Header -->
+
+			<!-- Breadcrumb -->
+			<div class="breadcrumb-bar">
+				<div class="container-fluid">
+					<div class="row align-items-center">
+						<div class="col-md-12 col-12">
+							<nav aria-label="breadcrumb" class="page-breadcrumb">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Invoice View</li>
+								</ol>
+							</nav>
+							<h2 class="breadcrumb-title">Invoice View</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+			
+			<!-- Page Content -->
+			<div class="content">
+				<div class="container-fluid">
+
+					<div class="row">
+						<div class="col-lg-8 offset-lg-2">
+							<div class="invoice-content">
+								<div class="invoice-item">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="invoice-logo">
+												<img src="{% static 'website/img/logo.png' %}" alt="logo">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<p class="invoice-details">
+												<strong>Order:</strong>{{bookingProFile.id}} <br>
+												<strong>Issued:</strong> {{datet}}
+											</p>
+										</div>
+									</div>
+								</div>
+								
+								<!-- Invoice Item -->
+								<div class="invoice-item">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="invoice-info">
+												<strong class="customer-text">Invoice From</strong>
+												<p class="invoice-details invoice-details-two">
+													{{bookingProFile.username}} <br>
+													{{bookingProFile.Address_line1}}<br>
+													{{bookingProFile.Address_line2}} <br>
+												</p>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="invoice-info invoice-info2">
+												<strong class="customer-text">Invoice To</strong>
+												<p class="invoice-details">
+													{{patientbookingid.first_name}}<br>
+													{{patientbookingid.phoneNumber}} <br>
+													{{patientbookingid.email}} <br>
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- /Invoice Item -->
+								
+								<!-- Invoice Item -->
+								<div class="invoice-item">
+									<div class="row">
+										<div class="col-md-12">
+											<div class="invoice-info">
+												<strong class="customer-text">Payment Method</strong>
+												<p class="invoice-details invoice-details-two">
+													Debit Card <br>
+													XXXXXXXXXXXX-{{r3}}{{r2}}{{r1}}{{r0}} <br>
+
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- /Invoice Item -->
+								
+								<!-- Invoice Item -->
+								<div class="invoice-item invoice-table-wrap">
+									<div class="row">
+										<div class="col-md-12">
+											<div class="table-responsive">
+												<table class="invoice-table table table-bordered">
+													<thead>
+														<tr>
+															<th>Description</th>
+															<th class="text-center"></th>
+
+															<th class="text-right">Total</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>General Consultation</td>
+															<td class="text-center"></td>
+
+															<td class="text-right">{{bookingProFile.consultation_fees}}</td>
+														</tr>
+														<tr>
+															<td>Video Call Booking</td>
+															<td class="text-center"></td>
+
+															<td class="text-right">Already included !!</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+										<div class="col-md-6 col-xl-4 ml-auto">
+											<div class="table-responsive">
+												<table class="invoice-table-two table">
+													<tbody>
+													<tr>
+														<th>Subtotal:</th>
+														<td><span></span>{{bookingProFile.consultation_fees}}</td>
+													</tr>
+
+													<tr>
+														<th>Total Amount:</th>
+														<td><span>{{total}}</span></td>
+													</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- /Invoice Item -->
+								
+								<!-- Invoice Information -->
+
+								<!-- /Invoice Information -->
+								
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>		
+			<!-- /Page Content -->
+   
+ {% include "footer.html" %}

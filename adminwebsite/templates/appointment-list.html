@@ -1,0 +1,109 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+			
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+                <div class="content container-fluid">
+				
+					<!-- Page Header -->
+					<div class="page-header">
+						<div class="row">
+							<div class="col-sm-12">
+								<h3 class="page-title">Appointments</h3>
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item"><a href="admin">Dashboard</a></li>
+									<li class="breadcrumb-item active">Appointments</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- /Page Header -->
+					<div class="row">
+						<div class="col-md-12">
+						
+							<!-- Recent Orders -->
+							<div class="card">
+								<div class="card-body">
+									<div class="table-responsive">
+										<table class="datatable table table-hover table-center mb-0">
+											<thead>
+												<tr>
+													<th>Doctor Name</th>
+													<th>Speciality</th>
+													<th>Patient Name</th>
+													<th>Apointment Time</th>
+													<th class="text-right">Amount</th>
+
+
+												</tr>
+											</thead>
+											{% for app in allappointments %}
+											<tbody>
+												<tr>
+													<td>
+														<h2 class="table-avatar">
+															<a href="{% url 'profilew' app.appointment_doctor_id.id %}" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{{app.appointment_doctor_id.doctor_images.url}}" alt="User Image"></a>
+															<a href="{% url 'profilew' app.appointment_doctor_id.id %}">{{app.appointment_doctor_id.username}}</a>
+														</h2>
+													</td>
+													<td>{{app.appointment_doctor_id.Specialiazation}}</td>
+													<td>
+														<h2 class="table-avatar">
+															<a href="{% url 'patientProfileshow' app.appointment_patient_id.id %}" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{{app.appointment_patient_id.patient_images.url}}" alt="User Image"></a>
+															<a href="{% url 'patientProfileshow' app.appointment_patient_id.id %}">{{app.appointment_patient_id.first_name}}</a>
+														</h2>
+													</td>
+													<td>{{app.date}}<span class="text-primary d-block">{{app.from_time}} - {{app.to_time}}</span></td>
+
+													<td class="text-right">
+														{{app.amount_paid}}
+													</td>
+													<td class="text-right">
+														<div class="actions">
+															<a  data-toggle="modal" href="#delete_modal" class="btn btn-sm bg-danger-light">
+																<i class="fe fe-trash"></i> Delete
+															</a>
+														</div>
+													</td>
+												</tr>
+
+											</tbody>
+											{% endfor %}
+										</table>
+									</div>
+								</div>
+							</div>
+							<!-- /Recent Orders -->
+							
+						</div>
+					</div>
+				</div>			
+			</div>
+			<!-- /Page Wrapper -->
+		
+        </div>
+		<!-- /Main Wrapper -->
+		
+		<!-- jQuery -->
+        <script src="{% static 'adminwebsite/js/jquery-3.2.1.min.js' %}"></script>
+		
+		<!-- Bootstrap Core JS -->
+        <script src="{% static 'adminwebsite/js/popper.min.js' %}"></script>
+        <script src="{% static 'adminwebsite/js/bootstrap.min.js' %}"></script>
+		
+		<!-- Slimscroll JS -->
+        <script src="{% static 'adminwebsite/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+		
+		<!-- Datatables JS -->
+		<script src="{% static 'adminwebsite/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+		<script src="{% static 'adminwebsite/plugins/datatables/datatables.min.js' %}"></script>
+		
+		<!-- Custom JS -->
+		<script  src="{% static 'adminwebsite/js/script.js' %}"></script>
+		
+    </body>
+
+<!-- Mirrored from dreamguys.co.in/demo/doccure/admin/appointment-list by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:49 GMT -->
+</html>
+{% endblock %}

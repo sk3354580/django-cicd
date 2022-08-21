@@ -1,0 +1,99 @@
+
+{% extends 'websitelayout.html' %}
+{% load static %}
+{% block content %}
+
+			<!-- Breadcrumb -->
+			<div class="breadcrumb-bar">
+				<div class="container-fluid">
+					<div class="row align-items-center">
+						<div class="col-md-8 col-12">
+							<nav aria-label="breadcrumb" class="page-breadcrumb">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="index-2">Home</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Search</li>
+								</ol>
+							</nav>
+							<h2 class="breadcrumb-title">{{querycounts}} matches found for : {{filteredspecial}} In {{filteredlocation}} </h2>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+
+			<!-- Page Content -->
+			<div class="content">
+				<div class="container-fluid">
+
+					<div class="row">
+
+
+						<div class="col-md-12 col-lg-8 col-xl-9">
+
+							{% for i in filteredquery %}
+							<!-- Doctor Widget -->
+							<div class="card">
+								<div class="card-body">
+									<div class="doctor-widget">
+										<div class="doc-info-left">
+											<div class="doctor-img">
+												<a href="{% url 'doctorprofile' i.id %}">
+													<img src="{{i.doctor_images.url}}" class="img-fluid" alt="User Image">
+												</a>
+											</div>
+											<div class="doc-info-cont">
+												<h4 class="doc-name"><a href="{% url 'doctorprofile' i.id %}">{{i.username}}</a></h4>
+												<p class="doc-speciality">{{i.degree}}</p>
+												<p class="doc-department"><img src="{% static 'website/img/specialities/specialities-03.png' %}" class="img-fluid" alt="Speciality">{{i.Specialiazation}}</p>
+
+												<div class="clinic-details">
+													<p class="doc-location"><i class="fas fa-map-marker-alt"></i>{{i.clinic_address}}</p>
+													<ul class="clinic-gallery">
+														<li>
+															<a href="{% static 'website/img/features/feature-01.jpg' %}" data-fancybox="gallery">
+																<img src="{% static 'website/img/features/feature-01.jpg' %}" alt="Feature">
+															</a>
+														</li>
+														<li>
+															<a href="{% static 'website/img/features/feature-04.jpg' %}" data-fancybox="gallery">
+																<img src="{% static 'website/img/features/feature-04.jpg' %}" alt="Feature">
+															</a>
+														</li>
+													</ul>
+												</div>
+												<div class="clinic-services">
+													<span>{{i.Specialiazation}}</span>
+													<span> Whitneing</span>
+												</div>
+											</div>
+										</div>
+										<div class="doc-info-right">
+											<div class="clini-infos">
+												<ul>
+
+													<li><i class="fas fa-map-marker-alt"></i>{{i.Address_line2}}</li>
+													<li><i class="far fa-money-bill-alt"></i> {{i.consultation_fees}}<i data-toggle="tooltip" title="Lorem Ipsum">rs</i></li>
+												</ul>
+											</div>
+											<div class="clinic-booking">
+												<a class="view-pro-btn" href="{% url 'doctorprofile' i.id %}">View Profile</a>
+												<a class="apt-btn" href="{% url 'bookings' i.id %}">Book Appointment</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- /Doctor Widget -->
+							{% endfor %}
+
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+			<!-- /Page Content -->
+
+			 {% include "footer.html" %}
+{% endblock %}

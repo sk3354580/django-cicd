@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    {% static 'adminwebsite' %}
+<!-- Mirrored from dreamguys.co.in/demo/doccure/admin/admin by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:20 GMT -->
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <title>Doccure - Dashboard</title>
+
+		<!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'adminwebsite/img/favicon.png' %}">
+
+		<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'adminwebsite/css/bootstrap.min.css' %}">
+
+		<!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="{% static 'adminwebsite/css/font-awesome.min.css' %}">
+
+		<!-- Feathericon CSS -->
+        <link rel="stylesheet" href="{% static 'adminwebsite/css/feathericon.min.css' %}">
+
+		<link rel="stylesheet" href="{% static 'adminwebsite/plugins/morris/morris.css' %}">
+
+		<!-- Main CSS -->
+        <link rel="stylesheet" href="{% static 'adminwebsite/css/style.css' %}">
+
+		<!--[if lt IE 9]>
+			<script src="{% static 'adminwebsite/js/html5shiv.min.js' %}"></script>
+			<script src="{% static 'adminwebsite/js/respond.min.js' %}"></script>
+		<![endif]-->
+    </head>
+    <body>
+
+		<!-- Main Wrapper -->
+        <div class="main-wrapper">
+
+			<!-- Header -->
+            <div class="header">
+
+				<!-- Logo -->
+                <div class="header-left">
+                    <a href="admin" class="logo">
+						<img src="{% static 'adminwebsite/img/logo.png' %}" alt="Logo">
+					</a>
+					<a href="admin" class="logo logo-small">
+						<img src="{% static 'adminwebsite/img/logo-small.png' %}" alt="Logo" width="30" height="30">
+					</a>
+                </div>
+				<!-- /Logo -->
+
+				<a href="javascript:void(0);" id="toggle_btn">
+					<i class="fe fe-text-align-left"></i>
+				</a>
+
+				<!-- Mobile Menu Toggle -->
+				<a class="mobile_btn" id="mobile_btn">
+					<i class="fa fa-bars"></i>
+				</a>
+				<!-- /Mobile Menu Toggle -->
+
+				<!-- Header Right Menu -->
+				<ul class="nav user-menu">
+
+
+
+					<!-- User Menu -->
+					<li class="nav-item dropdown has-arrow">
+						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+							<span class="user-img"><img class="rounded-circle" src="{% static 'adminwebsite/img/profiles/avatar-01.jpg' %}" width="31" alt="Ryan Taylor"></span>
+						</a>
+						<div class="dropdown-menu">
+							<div class="user-header">
+								<div class="avatar avatar-sm">
+									<img src="{% static 'adminwebsite/img/profiles/avatar-01.jpg' %}" alt="User Image" class="avatar-img rounded-circle">
+								</div>
+								<div class="user-text">
+									<h6>{{user}}</h6>
+									<p class="text-muted mb-0">{{user.email}}</p>
+								</div>
+							</div>
+							<a class="dropdown-item" href="{% url 'adminlogout' %}">Logout</a>
+						</div>
+					</li>
+					<!-- /User Menu -->
+
+				</ul>
+				<!-- /Header Right Menu -->
+
+            </div>
+			<!-- /Header -->
+
+			<!-- Sidebar -->
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-inner slimscroll">
+					<div id="sidebar-menu" class="sidebar-menu">
+						<ul>
+							<li class="menu-title">
+								<span>Main</span>
+							</li>
+							<li>
+								<a href="{% url 'admine' %}"><i class="fe fe-home"></i> <span>Dashboard</span></a>
+							</li>
+							<li>
+								<a href="{% url 'appointment_list' %}"><i class="fe fe-layout"></i> <span>Appointments</span></a>
+							</li>
+							<li>
+								<a href="{% url 'specialities' %}"><i class="fe fe-users"></i> <span>Specialists</span></a>
+							</li>
+							<li>
+								<a href="{% url 'doctor_list' %}"><i class="fe fe-user-plus"></i> <span>Doctors</span></a>
+							</li>
+							<li>
+								<a href="{% url 'patient_list' %}"><i class="fe fe-user"></i> <span>Patients</span></a>
+							</li>
+						</ul>
+					</div>
+                </div>
+            </div>
+			<!-- /Sidebar -->
+			{% block content %}
+
+			{% endblock %}
